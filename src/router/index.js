@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import MyInfo from '@/components/MyInfo'
 import MyFeed from '@/components/MyFeed'
+import TagSearch from '@/components/TagSearch'
 
 Vue.use(Router)
 
@@ -24,9 +25,14 @@ const router = new Router({
       component: Login
     },
     {
-      path: '/feeds',
+      path: '/feed',
       name: 'MyFeed',
       component: MyFeed
+    },
+    {
+      path: '/search',
+      name: 'TagSearch',
+      component: TagSearch
     }
   ]
 })

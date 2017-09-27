@@ -5,25 +5,21 @@
             <md-input @keydown.native="tagName = $event.target.value" @keydown.native.enter="search"></md-input>
         </md-input-container>
 
-        <md-card v-for="feed in feeds" :key="feed.id">
-            <md-card-media>
-                <img :src="feed.images.standard_resolution.url">
-            </md-card-media>
-
-            <md-card-header v-if="feed.caption">
-                <div class="md-title">{{ feed.caption.from.full_name }}</div>
-                <div class="md-subhead">{{ feed.caption.from.username }}</div>
-            </md-card-header>
-
-            <md-card-content>
-                {{ feed.caption.text }}
-            </md-card-content>
+        <feed v-for="feed in feeds" :key="feed.id" v-if="feed.caption"
+            :image-url='feed.images.standard_resolution.url'
+            :full-name='feed.caption.from.full_name'
+            :username=' feed.caption.from.username'
+            :contents='feed.caption.text'
+            >
+        </feed>
         </md-card>
     </div>
 </template>
 
 <script>
     import jsonp from 'jsonp'
+    import Feed from './Feed'
+
     export default {
         name: 'TagSearch',
         data() {
@@ -44,6 +40,9 @@
                     console.log(response.data)
                 })
             }
+        },
+        components: {
+            Feed
         }
     }
 </script>
