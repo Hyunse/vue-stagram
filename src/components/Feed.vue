@@ -4,7 +4,7 @@
             <img :src="imageUrl">
         </md-card-media>
 
-        <md-card-header v-if="feed.caption">
+        <md-card-header >
             <div class="md-title">{{ fullName }}</div>
             <div class="md-subhead">@{{ username }}</div>
         </md-card-header>
